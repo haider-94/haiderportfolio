@@ -56,18 +56,20 @@ export default function Page({ params }: { params: { slug: string } }) {
       <section className="flex flex-col gap-4">
         <h3 className="text-xl font-medium md:text-2xl">Screenshots</h3>
         <div className="flex flex-wrap items-center flex-none gap-2">
-          {project.images?.map((i) => {
+          {project.images?.map((im, i) => {
             return (
+              <div key={i}>
+
               <Image
-              key={i}
                 alt="images"
-                src={i}
+                src={im}
                 style={{
                   width: 400,
                   height: 400,
                   borderRadius: 10,
                 }}
-              />
+                />
+                </div>
             );
           })}
         </div>
