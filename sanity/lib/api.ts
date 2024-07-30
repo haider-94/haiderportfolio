@@ -27,7 +27,7 @@ export function getOnePost(slug: string) {
   return sanity_fetch(`*[_type == "post" && slug.current == "${slug}"][0]`);
 }
 
-export function getProjects(): Promise<Project[]> {
+export function getProjects(): any {
   return sanity_fetch(`*[_type == "project"]{
     title,
     "slug": slug.current,
@@ -40,7 +40,7 @@ export function getProjects(): Promise<Project[]> {
   } | order(dateRange.start desc)`);
 }
 
-export async function getProject(slug: string): Promise<Project> {
+export async function getProject(slug: string) {
   const res =
     await sanity_fetch(`*[_type == "project" && slug.current == "${slug}"]{
     title,
@@ -55,7 +55,7 @@ export async function getProject(slug: string): Promise<Project> {
   return res.length === 0 ? null : res[0];
 }
 
-export function getExperiences(): Promise<Experience[]> {
+export function getExperiences(): any {
   return sanity_fetch(`*[_type == "experience"]{
     title,
     "slug": slug.current,
@@ -66,7 +66,7 @@ export function getExperiences(): Promise<Experience[]> {
     } | order(dateRange.start desc)`);
 }
 
-export function getQoutes(): Promise<Qoute[]> {
+export function getQoutes(): any {
   return sanity_fetch(`*[_type == "qoute"]{
     qoute,
     "slug": slug.current,
@@ -75,9 +75,9 @@ export function getQoutes(): Promise<Qoute[]> {
 }
 
 export async function getHomePageData(): Promise<{
-  projects: Project[];
-  experiences: Experience[];
-  qoute: Qoute;
+  projects: any;
+  experiences: any;
+  qoute: any;
 }> {
   const res =
     await sanity_fetch(`*[((_type == "project" || _type == "experience") && showOnHomePage) || _type == "qoute"]{
@@ -105,16 +105,16 @@ export async function getHomePageData(): Promise<{
   };
 }
 
-export async function getTechItems(): Promise<Tag[]> {
+export async function getTechItems() {
   const data = await sanity_fetch(`*[_type == "tag" && categories != null]{
     name, icon, "slug": slug.current, iconFileName, iconScale,
     categories[] -> { title, "slug": slug.current },
   }`);
   // categorize tags by categories
-  const categories: { [key: string]: Tag[] } = {};
-  data.forEach((tag: Tag) => {
+  const categories: { [key: string]: any } = {};
+  data.forEach((tag: any) => {
     if (!tag.categories) return;
-    tag.categories.forEach((category: Category) => {
+    tag.categories.forEach((category: any) => {
       if (!categories[category.slug]) categories[category.slug] = [];
       categories[category.slug].push(tag);
     });
