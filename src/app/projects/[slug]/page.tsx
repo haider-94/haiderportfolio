@@ -59,6 +59,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           {project.images?.map((i) => {
             return (
               <Image
+              key={i}
                 alt="images"
                 src={i}
                 style={{
