@@ -16,9 +16,8 @@ const Particles = dynamic(() => import("@/components/Particles"), {
 });
 
 export const metadata = {
-  title: "Bowang Lan",
-  description:
-    "Bowang Lan is a software engineer based in Seattle, WA and a student at University of Washington.",
+  title: "Fazal Karim",
+  description: "I'm a Full-Stack Software Engineer",
   visualViewport: {
     width: "device-width",
     initialScale: 1.0,
@@ -36,7 +35,7 @@ export default function RootLayout({
         <body
           className={
             font.className +
-            " mih-h-screen max-w-screen overflow-x-hidden flex flex-col font-light"
+            "mih-h-screen max-w-screen overflow-x-hidden flex flex-col font-light"
           }
         >
           <div className="z-20 flex-none">

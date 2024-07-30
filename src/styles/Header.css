@@ -1,48 +1,48 @@
 .nav-item::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    right: 50%;
-    height: 2px;
-    background: var(--primary);
-    transition: all 0.25s ease-out;
-    /* width: 0; */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: var(--primary);
+  transition: all 0.25s ease-out;
+  /* width: 0; */
 }
 
 .nav-item[data-active="true"]::before {
-    left: 0;
-    right: 0;
-    @apply bg-slate-400;
+  left: 0;
+  right: 0;
+  @apply text-gray-300;
 }
 
 .nav-item[data-active="true"]:hover::before {
-    background: var(--text);
+  background: var(--text);
 }
 
 .nav-item:hover::before {
-    left: 0;
-    right: 0;
+  left: 0;
+  right: 0;
 }
 
 .nav-item {
-    position: relative;
-    @apply text-slate-400;
+  position: relative;
+  @apply font-bold;
 }
 
 .nav-item:hover {
-    color: var(--text);
+  color: var(--text);
 }
 
 .nav-item[data-active="true"] {
-    color: var(--text);
-    background: var(--bg-nav-item-active);
+  color: var(--text);
+  background: var(--bg-nav-item-active);
 }
 
 .nav-item[data-active="true"]:hover {
-    background: var(--bg-nav-item-active-hover);
+  background: var(--bg-nav-item-active-hover);
 }
 
 #mobile-menu .nav-item[data-active="true"] {
-    background: transparent;
+  background: transparent;
 }

@@ -1,9 +1,7 @@
 "use client";
-
 import React, { useMemo } from "react";
-// import { AnimatePresence, motion, usePresence } from "framer-motion";
 import Image from "next/image";
-
+import { tabs as defaultTabs, tabsData as defaultTabsData } from "../constants";
 const Tab = ({
   name,
   active,
@@ -26,10 +24,7 @@ const Tab = ({
   );
 };
 
-// const transition = { type: "spring", stiffness: 500, damping: 50, mass: 1 };
-
 function TagCircle({ tag }: { tag: Tag }) {
-  // const [isPresent, safeToRemove] = usePresence();
   return (
     <div
       className="flex flex-col items-center hover:bg-[var(--bg-hover)] trans bg-slate-400/10 rounded-lg p-2"
@@ -37,16 +32,6 @@ function TagCircle({ tag }: { tag: Tag }) {
         width: 120,
         height: 120,
       }}
-      // layout={true}
-      // initial="out"
-      // style={{
-      //   position: isPresent ? "static" : "absolute",
-      // }}
-      // animate={isPresent ? "in" : "out"}
-      // whileTap="tapped"
-      // variants={variants}
-      // onAnimationComplete={() => !isPresent && safeToRemove()}
-      // transition={transition}
     >
       <div className="relative flex-none translate-y-1.5 -translate-x-0 fcenter h-3/5">
         <Image
@@ -61,27 +46,11 @@ function TagCircle({ tag }: { tag: Tag }) {
   );
 }
 
-export function TechSection({ data }: { data: Tag[] }) {
+export function TechSection({}: {}) {
   const [tabs, tabsData] = useMemo(() => {
-    let tabs: Category[] = [];
-    const slugSet = new Set<string>();
-    data.forEach((tag) => {
-      tag.categories.forEach((category) => {
-        if (slugSet.has(category.slug)) return;
-        slugSet.add(category.slug);
-        tabs.push(category);
-      });
-    });
-    const tabsData: Record<string, Tag[]> = {};
-    for (const tab of tabs) {
-      tabsData[tab.slug] = data.filter((tag) =>
-        tag.categories.map((c) => c.slug).includes(tab.slug)
-      );
-    }
-    tabs = [{ title: "All", slug: "all" }, ...tabs];
-    tabsData["all"] = data;
-    return [tabs, tabsData];
-  }, [data]);
+    return [defaultTabs, defaultTabsData];
+  }, []);
+
   const [activeTab, setActiveTab] = React.useState({
     i: 0,
     slug: tabs[0].slug,

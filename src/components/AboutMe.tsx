@@ -10,12 +10,12 @@ export function AboutMe() {
       transition={{ duration: 0.5, delay: 0.5 }}
       exit={{ opacity: 0, y: 40 }}
       viewport={{ once: true }}
-      className="max-w-[600px] text-center"
+      className="max-w-[800px] text-justify"
     >
       {ABOUT_ME_TEXT.map((t, i) => (
         <p
           key={i}
-          className="mb-6 leading-8 tracking-wide md:leading-10"
+          className="mb-6 leading-8 tracking-wide md:leading-8 md:text-lg"
           dangerouslySetInnerHTML={{ __html: t }}
         ></p>
       ))}

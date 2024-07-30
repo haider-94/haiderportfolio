@@ -14,7 +14,7 @@ export default function Blogs() {
         setPosts(() => data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, []);
 

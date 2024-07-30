@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { DateRange } from "./DateRange";
+
 // import { motion } from "framer-motion";
 
 function Dot({ className }: { className?: string }) {
@@ -40,39 +41,42 @@ export function ExperienceCard({
       //     },
       //   },
       // }}
+
       className="w-full flex flex-col space-y-1 cursor-default md:px-4 md:py-4 lg:p-6 lg:space-y-2 trans md:hover:bg-[var(--bg-hover)] rounded-lg"
       style={{
         alignItems: align === "left" ? "flex-start" : "flex-end",
       }}
     >
-      <h3
-        className="text-lg font-semibold sm:text-2xl"
-        style={{
-          textAlign: align === "left" ? "left" : "right",
-        }}
-      >
-        {experience.organization}
-      </h3>
-      <div
-        className="flex items-baseline justify-between"
-        style={{
-          textAlign: align,
-        }}
-      >
-        <span className="text-base italic">{experience.title}</span>
-      </div>
-      <div
-        style={{
-          textAlign: align,
-        }}
-      >
-        <p className="text-xs sm:leading-6 md:text-sm text-slate-300 md:leading-6">
-          {experience.description}
-        </p>
-      </div>
-      {/* <div>
+      <>
+        <h3
+          className="text-lg font-semibold sm:text-2xl"
+          style={{
+            textAlign: align === "left" ? "left" : "right",
+          }}
+        >
+          {experience.company}
+        </h3>
+        <div
+          className="flex items-baseline justify-between"
+          style={{
+            textAlign: align,
+          }}
+        >
+          <span className="text-base italic">{experience.title}</span>
+        </div>
+        <div
+          style={{
+            textAlign: align,
+          }}
+        >
+          <p className="text-xs sm:leading-6 md:text-sm text-slate-300 md:leading-6">
+            {experience.description}
+          </p>
+        </div>
+        {/* <div>
         <BlockContent value={experience.content} />
       </div> */}
+      </>
     </div>
   );
 }
@@ -105,13 +109,13 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
         <div className="relative flex group" key={i}>
           <div className="relative flex items-start md:hidden">
             <div className="absolute z-10 w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[48px]"></div>
-            <div className="flex flex-col items-start flex-1 min-w-0 gap-2 my-10 ml-6 sm:gap-8 sm:ml-8 sm:flex-row">
+            {/* <div className="flex flex-col items-start flex-1 min-w-0 gap-2 my-10 ml-6 sm:gap-8 sm:ml-8 sm:flex-row">
               <DateRange
-                dateRange={experience.dateRange}
+                dateRange={experience.dateRange.start}
                 className="text-lg text-blue-200"
               />
               <ExperienceCard experience={experience} key={experience.slug} />
-            </div>
+            </div> */}
           </div>
           <div className="w-[2px] absolute  md:left-1/2 h-full bg-blue-500"></div>
           <div className="relative hidden w-full py-8 md:flex">

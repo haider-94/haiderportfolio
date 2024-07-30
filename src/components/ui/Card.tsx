@@ -119,7 +119,10 @@ export function Container({
           transitionDuration: "0.5s",
         }}
       ></div>
-      <Link href={href} className="absolute inset-0 z-20 block opacity-0"></Link>
+      <Link
+        href={href}
+        className="absolute inset-0 z-20 block opacity-0"
+      ></Link>
     </motion.div>
   );
 }
@@ -127,10 +130,10 @@ export function Container({
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="relative rounded-lg border group md:border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--bg-hover)] trans">
-      <div className="z-10 flex flex-col p-4 space-y-3 cursor-pointer md:space-y-4 sm:p-5">
+      <div className="z-10 flex flex-col p-4 space-y-3 cursor-pointer md:space-y-4 sm:p-6">
         {/* Title */}
-        <div className="flex items-center flex-none gap-3">
-          <h3 className="text-lg font-medium truncate sm:text-xl lg:text-2xl trans">
+        <div className="flex items-center flex-none gap-2">
+          <h3 className="text-lg font-medium truncate sm:text-xl lg:text-xl trans">
             {project.title}
           </h3>
           <div className="items-center hidden gap-3 sm:flex">
@@ -180,13 +183,16 @@ export function ProjectCard({ project }: { project: Project }) {
 export function ProjectCardList({
   projects,
   className = "",
+  limited = false,
 }: {
   projects: Project[];
   className?: string;
+  limited: Boolean;
 }) {
+  let pr = limited ? projects.filter((p) => p.isFeatured) : projects;
   return (
     <div className={cn("grid gap-4 lg:mx-auto max-w-4xl", className)}>
-      {projects.map((project) => (
+      {pr.map((project) => (
         <ProjectCard project={project} key={project.slug} />
       ))}
     </div>
@@ -223,10 +229,10 @@ export function List({
   );
 }
 
-export function Tags({ tags }: { tags: Tag[] }) {
+export function Tags({ tags }: any) {
   return (
     <div className="z-20 flex flex-wrap items-center flex-none gap-2">
-      {tags.map((tag) => (
+      {tags.map((tag: any) => (
         <TagPill tag={tag} key={tag.name} />
       ))}
     </div>

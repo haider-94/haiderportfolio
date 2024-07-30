@@ -1,3 +1,5 @@
+import { Image } from "sanity";
+
 type Icon = "external" | "github";
 
 interface Link {
@@ -37,13 +39,15 @@ interface Project {
   githubUrl?: string;
   dateRange: DateRange;
   tags: Tag[];
+  images: any[];
   content: any[];
+  isFeatured: Boolean;
 }
 
 interface Experience {
   title: string;
   slug: string;
-  organization: string;
+  company: string;
   description: string;
   content: string;
   dateRange: DateRange;

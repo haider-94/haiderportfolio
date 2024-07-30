@@ -15,11 +15,8 @@ export default function Footer() {
       }}
     >
       <div>
-        <span className="text-sm text-gray-300">
-          &copy; {new Date().getFullYear()} Bowang Lan. All rights reserved.
-        </span>
+        <SocialMedia size="sm" />
       </div>
-      <SocialMedia size="sm" />
     </footer>
   );
 }

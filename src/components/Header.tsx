@@ -23,8 +23,8 @@ function NavItem({
       data-active={active}
       aria-label={text}
       className={cn(
-        "z-10 px-5 py-2.5 bg-transparent cursor-pointer trans nav-item rounded-lg",
-        className
+        "z-10 px-5 py-2.5 bg-transparent cursor-pointer trans nav-item rounded-lg"
+        // className
       )}
       {...props}
     >
@@ -73,12 +73,12 @@ export default function Header() {
       }}
     >
       <span
-        className="text-lg cursor-pointer"
+        className="text-lg cursor-pointer font-bold"
         onClick={() => {
           router.push("/");
         }}
       >
-        Bowang Lan
+        FAZAL KARIM
       </span>
       <div className="flex-1"></div>
       <div>
@@ -116,7 +116,7 @@ export default function Header() {
           ></div>
           <div
             ref={activeBox}
-            className="absolute inset-y-0 left-0 rounded-lg opacity-0 pointer-events-none bg-blue-700/70"
+            className="absolute inset-y-0 left-0 rounded-lg opacity-0 pointer-events-none"
           ></div>
           {navItems.map((item, i) => (
             <NavItem

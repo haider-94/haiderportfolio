@@ -1,3 +1,4 @@
+"use client";
 import DefaultLayout from "@/components/layout/DefaultLayout";
 import { getProject } from "../../../../sanity/lib/api";
 import { TagPill } from "@/components/ui/Tag";
@@ -5,10 +6,12 @@ import { DateRange } from "@/components/ui/DateRange";
 import { Row } from "@/components/layout/Row";
 import { Col } from "@/components/layout/Col";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { myProjects } from "@/constants";
+import Image from "next/image";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default function Page({ params }: { params: { slug: string } }) {
   const slug = params.slug;
-  const project = await getProject(slug);
+  const project = myProjects.find((p) => p.slug === slug);
 
   if (!project) {
     return (
@@ -17,8 +20,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </div>
     );
   }
-
-  console.log("[page] project detail");
 
   return (
     <Col className="mb-8 space-y-8 max-w-7xl">
@@ -52,6 +53,27 @@ export default async function Page({ params }: { params: { slug: string } }) {
           ))}
         </div>
       </section>
+      <section className="flex flex-col gap-4">
+        <h3 className="text-xl font-medium md:text-2xl">Screenshots</h3>
+        <div className="flex flex-wrap items-center flex-none gap-2">
+          {project.images?.map((i) => {
+            return (
+              <Image
+                alt="images"
+                src={i}
+                style={{
+                  width: 400,
+                  height: 400,
+                  borderRadius: 10,
+                }}
+              />
+            );
+          })}
+        </div>
+      </section>
     </Col>
   );
+}
+
+{
 }

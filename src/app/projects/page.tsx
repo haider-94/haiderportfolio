@@ -5,11 +5,12 @@ import { SectionHeader } from "@/components/ui/Typography";
 import * as Card from "@/components/ui/Card";
 import { Col } from "@/components/layout/Col";
 import { ExternalLink } from "lucide-react";
+import { myProjects } from "@/constants";
 
 export default async function ProjectsPage() {
   console.log("ProjectsPage");
 
-  const projects = await getProjects();
+  // const projects = await getProjects();
 
   // console.log("projects", projects);
 
@@ -19,7 +20,7 @@ export default async function ProjectsPage() {
         <SectionHeader>My Projects</SectionHeader>
       </div>
       <Col className="gap-4 sm:gap-6">
-        {projects.map((project) => (
+        {myProjects.map((project) => (
           <Card.Container key={project.slug} href={`/projects/${project.slug}`}>
             <Card.Content>
               <div className="flex justify-between">
