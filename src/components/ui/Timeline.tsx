@@ -22,7 +22,7 @@ export function ExperienceCard({
   experience,
   align = "left",
 }: {
-  experience: Experience;
+  experience: any;
   align?: "left" | "right";
 }) {
   return (
@@ -81,7 +81,7 @@ export function ExperienceCard({
   );
 }
 
-export function ExperienceList({ experiences }: { experiences: Experience[] }) {
+export function ExperienceList({ experiences }: { experiences: any }) {
   // console.log("experiences", experiences);
   return (
     <div
@@ -105,7 +105,7 @@ export function ExperienceList({ experiences }: { experiences: Experience[] }) {
       //   },
       // }}
     >
-      {experiences.map((experience, i) => (
+      {experiences.map((experience: any, i:any) => (
         <div className="relative flex group" key={i}>
           <div className="relative flex items-start md:hidden">
             <div className="absolute z-10 w-2 h-2 bg-blue-100 rounded-full -left-[3px] top-[48px]"></div>

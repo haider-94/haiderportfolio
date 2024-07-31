@@ -1,10 +1,8 @@
 "use client";
-
 import { DateRange } from "./DateRange";
 import { GithubLink, WebsiteLink } from "./Link";
 import { TagPill } from "../ui/Tag";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { VARIANTS } from "@/lib/animate";
@@ -127,7 +125,7 @@ export function Container({
   );
 }
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project }: { project: any }) {
   return (
     <div className="relative rounded-lg border group md:border-[var(--border)] hover:border-[var(--border-hover)] hover:bg-[var(--bg-hover)] trans">
       <div className="z-10 flex flex-col p-4 space-y-3 cursor-pointer md:space-y-4 sm:p-6">
@@ -167,7 +165,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
         {/* Tags */}
         <div className="flex flex-wrap items-center flex-none gap-2">
-          {project.tags.map((tag) => (
+          {project.tags.map((tag: any) => (
             <TagPill tag={tag} key={tag.name} />
           ))}
         </div>
@@ -185,14 +183,14 @@ export function ProjectCardList({
   className = "",
   limited = false,
 }: {
-  projects: Project[];
+  projects: any;
   className?: string;
   limited: Boolean;
 }) {
-  let pr = limited ? projects.filter((p) => p.isFeatured) : projects;
+  let pr = limited ? projects.filter((p: any) => p.isFeatured) : projects;
   return (
     <div className={cn("grid gap-4 lg:mx-auto max-w-4xl", className)}>
-      {pr.map((project) => (
+      {pr.map((project: any) => (
         <ProjectCard project={project} key={project.slug} />
       ))}
     </div>

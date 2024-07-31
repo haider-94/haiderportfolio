@@ -4,7 +4,7 @@ export function DateRange({
   dateRange,
   className,
 }: {
-  dateRange: DateRange;
+  dateRange: any;
   className?: string;
 }) {
   return (
