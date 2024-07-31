@@ -255,7 +255,7 @@ export const myProjects = [
         name: "PostgreSQL",
         slug: "postgresql",
         icon: "postgresql",
-        iconFileName: "postgresql.png",
+        iconFileName: "postgreSQL.png",
       },
       {
         name: "Google Maps",
@@ -580,7 +580,7 @@ export const sampleTags: any = [
 
   {
     name: "PostgreSQL",
-    iconFileName: "postgresql.png",
+    iconFileName: "postgreSQL.png",
     iconScale: 1.9,
     slug: "postgresql",
     categories: [{ title: "Database", slug: "database" }],
