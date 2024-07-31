@@ -24,7 +24,7 @@ const Tab = ({
   );
 };
 
-function TagCircle({ tag }: { tag: Tag }) {
+function TagCircle({ tag }: any) {
   return (
     <div
       className="flex flex-col items-center hover:bg-[var(--bg-hover)] trans bg-slate-400/10 rounded-lg p-2"
@@ -59,7 +59,7 @@ export function TechSection({}: {}) {
   return (
     <div className="flex flex-col items-center w-full space-y-8">
       <div className="flex flex-wrap justify-center gap-1 md:gap-2">
-        {tabs.map((tab, i) => (
+        {tabs.map((tab: any, i:any) => (
           <Tab
             key={i}
             name={tab.title}
@@ -74,7 +74,7 @@ export function TechSection({}: {}) {
         ))}
       </div>
       <div className="flex flex-wrap justify-center gap-3 md:gap-6 max-w-[80%]">
-        {tabsData[activeTab.slug].map((tag, i) => (
+        {tabsData[activeTab.slug].map((tag: any, i: any) => (
           <TagCircle tag={tag} key={i} />
         ))}
       </div>
