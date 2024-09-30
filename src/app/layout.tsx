@@ -16,8 +16,8 @@ const Particles = dynamic(() => import("@/components/Particles"), {
 });
 
 export const metadata = {
-  title: "Fazal Karim",
-  description: "I'm a Full-Stack Software Engineer",
+  title: "Haider Ali",
+  description: "I'm a Front-end Engineer",
   visualViewport: {
     width: "device-width",
     initialScale: 1.0,

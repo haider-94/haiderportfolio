@@ -26,10 +26,10 @@ export default async function Home() {
             <span className="font-bold primary-gradient"> Haider Ali</span>
           </h1>
           <div className="text-base tracking-wide text-center lg:pt-3 sm:text-xl md:text-3xl">
-            A Full-Stack Software Engineer
+            Frontend Engineer
           </div>
           <div className="text-sm italic font-bold tracking-wide text-center md:text-base lg:text-lg primary-gradient-2">
-            Actively looking for Remote Full Stack Opportunity!
+            Actively looking for Remote Frontend Opportunity!
           </div>
           <div className="flex items-center pt-3 md:gap-4">
             {/* <ContactMeButton /> */}

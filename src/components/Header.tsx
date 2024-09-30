@@ -78,7 +78,7 @@ export default function Header() {
           router.push("/");
         }}
       >
-        FAZAL KARIM
+        Haider Ali
       </span>
       <div className="flex-1"></div>
       <div>
