@@ -121,6 +121,56 @@ export const myProjects = [
       },
     ],
   },
+
+  {
+    isFeatured: false,
+
+    title: "Vstora",
+    slug: "Vstora",
+    websiteUrl: "https://vstora.com/",
+    description:
+      "One stop solution for creating and managing your online business with inventory management. API’s integration/configuration for Customer side and dashboard. UI/UX development, third party integrations",
+    dateRange: { start: "2022-10-01", end: "2023-04-01" },
+    images: [vstora1, vstora2, vstora3],
+    tags: [
+      {
+        name: "React",
+        slug: "react",
+        icon: "react",
+        iconFileName: "react.svg",
+      },
+      {
+        name: "NextJs",
+        slug: "nextjs",
+        icon: "nextjs",
+        iconFileName: "next-js.svg",
+      },
+      {
+        name: "NodeJS",
+        slug: "nodejs",
+        icon: "nodejs",
+        iconFileName: "node.js.png",
+      },
+      {
+        name: "Push Notification",
+        slug: "push-notification",
+        icon: "push-notification",
+        iconFileName: "push-notification.png",
+      },
+      {
+        name: "Google Maps",
+        slug: "google maps",
+        icon: "google-maps",
+        iconFileName: "google-map.png",
+      },
+      {
+        name: "Stripe Integration",
+        slug: "stripe-integration",
+        icon: "stripe-integration",
+        iconFileName: "stripe.png",
+      },
+    ],
+  },
   
   
   {
