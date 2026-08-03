@@ -1,26 +1,36 @@
 import { Analytics } from "@vercel/analytics/react";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
-// import Particles from "@/components/Particles";
-import { Raleway } from "next/font/google";
-// import { GeistSans } from "geist/font";
+import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { GlobalWrapper } from "@/components/GlobalWrapper";
-import dynamic from "next/dynamic";
-import { CSPostHogProvider } from "./providers";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { profile } from "@/data/portfolio";
 
-const font = Raleway({ display: "swap", subsets: ["latin"] });
+const serif = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  axes: ["opsz"],
+});
 
-const Particles = dynamic(() => import("@/components/Particles"), {
-  ssr: false,
+const grotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-grotesk",
 });
 
 export const metadata = {
-  title: "Haider Ali",
-  description: "I'm a Front-end Engineer",
-  visualViewport: {
+  title: `${profile.name} — ${profile.role}`,
+  description: profile.tagline,
+  metadataBase: new URL("https://haiderali.dev"),
+  themeColor: "#f3efe6",
+  viewport: {
     width: "device-width",
-    initialScale: 1.0,
+    initialScale: 1,
+  },
+  openGraph: {
+    title: `${profile.name} — ${profile.role}`,
+    description: profile.tagline,
+    type: "website",
   },
 };
 
@@ -30,23 +40,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <CSPostHogProvider>
-      <html lang="en">
-        <body
-          className={
-            font.className +
-            "mih-h-screen max-w-screen overflow-x-hidden flex flex-col font-light"
-          }
-        >
-          <div className="z-20 flex-none">
-            <Header />
-          </div>
-          <GlobalWrapper>{children}</GlobalWrapper>
-          <Footer />
-          <Analytics />
-          <Particles />
-        </body>
-      </html>
-    </CSPostHogProvider>
+    <html
+      lang="en"
+      className={`${serif.variable} ${grotesk.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}var e=document.documentElement;e.classList.toggle('dark',t==='dark');e.style.colorScheme=t;}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <Analytics />
+      </body>
+    </html>
   );
 }

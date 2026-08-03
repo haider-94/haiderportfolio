@@ -1,185 +1,267 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("../styles/Header.css");
-@import url("../styles/Scrollbar.css");
-@import url("../styles/Modal.css");
-@import url("../styles/Qoute.css");
-@import url("../styles/Qoute.css");
-@import url("../styles/BlockContent.css");
+
+/*
+  Editorial light theme — warm paper, ink text, a single vermilion accent.
+  Fonts are injected by next/font as --font-serif and --font-grotesk.
+*/
 
 :root {
-  --color-main: #fff;
-  --bg-main: #ededed;
-  --h-header: 80px;
-  --h-mobile-menu: calc(100vh - var(--h-header));
-  --h-main: calc(100vh - var(--h-header));
-  --w-scrollbar: 8px;
-  --w-main: calc(100vw - var(--w-scrollbar));
+  --paper: #f3efe6;
+  --paper-2: #ece7db;
+  --card: #faf7f0;
+  --ink: #1a1712;
+  --ink-soft: #4d4739;
+  --muted: #8a8271;
+  --line: #ddd5c4;
+  --line-strong: #c7bda7;
+  --accent: #c8452b;
+  --accent-soft: #e6d3c4;
 
-  --bg-modal: rgba(var(--primary-900), 0.7);
-  --bg-mobile-menu: rgba(var(--primary-900), 0.7);
-  /* --bg-nav-item-active: rgba(var(--primary-600), 0.6); */
-  /* --bg-nav-item-active-hover: rgba(var(--primary-600), 0.7); */
+  --header-scrolled-bg: rgba(243, 239, 230, 0.82);
 
-  /* --shadow-modal:  0px 0px 3px 0.5px rgba(var(--primary-500), 0.8); */
-
-  /* --text: 239 242 250;
-  --background: 0 4 15;
-  --primary: 26 77 244;
-  --secondary: 18 27 59;
-  --accent: 76 235 156; */
-  --text: rgb(250, 239, 239);
-  --background: rgb(7, 9, 13);
-  --primary: rgb(52, 93, 225);
-  --secondary: rgb(18, 27, 59);
-  --accent: rgb(76, 235, 156);
-
-  --primary-50: 211, 224, 252;
-  --primary-50-rgb: #d3e0fc;
-  --primary-100: 190, 209, 250;
-  --primary-100-rgb: #bed1fa;
-  --primary-200: 148, 177, 245;
-  --primary-200-rgb: #94b1f5;
-  --primary-300: 108, 145, 238;
-  --primary-300-rgb: #6c91ee;
-  --primary-400: 70, 111, 230;
-  --primary-400-rgb: #466fe6;
-  --primary-500: 52, 93, 225;
-  --primary-500-rgb: #345de1;
-  --primary-600: 44, 80, 196;
-  --primary-600-rgb: #2c50c4;
-  --primary-700: 28, 55, 139;
-  --primary-700-rgb: #1c378b;
-  --primary-800: 14, 31, 86;
-  --primary-800-rgb: #0e1f56;
-  --primary-900: 3, 10, 39;
-  --primary-900-rgb: #030a27;
-  --primary-950: 1, 3, 18;
-  --primary-950-rgb: #010312;
-
-  --bg-menu-container: linear-gradient(
-    to bottom,
-    rgb(var(--primary-950)),
-    rgba(var(--background), 0.8)
-  );
-
-  --bg-hover: rgba(var(--primary-500), 0.35);
-
-  --border: hsla(0, 0%, 100%, 0.3);
-  --border-hover: rgba(var(--primary-500), 0.8);
-
-  --radius: 0px;
-
-  /* font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif; */
-  /* font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif; */
-  /* font-family: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif; */
+  --h-header: 68px;
+  --maxw: 1120px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
+/* Warm dark theme — same editorial character, inverted tonality. */
+:root.dark {
+  --paper: #13110d;
+  --paper-2: #1a1712;
+  --card: #1c1913;
+  --ink: #efe9dc;
+  --ink-soft: #b5ad9c;
+  --muted: #837b6b;
+  --line: #2c2820;
+  --line-strong: #3b362b;
+  --accent: #e2694c;
+  --accent-soft: #33241c;
+
+  --header-scrolled-bg: rgba(18, 16, 12, 0.82);
 }
 
 @media screen and (min-width: 768px) {
   :root {
-    --h-header: 100px;
-  }
-}
-
-body {
-  color: var(--text);
-  background: var(--background);
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-}
-
-.fcenter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.trans {
-  transition: all 0.25s ease-out;
-}
-
-.px-page {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.primary-gradient {
-  background: linear-gradient(to right, rgb(var(--primary-500)), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.primary-gradient-2 {
-  background: linear-gradient(to right, rgb(var(--primary-400)), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.button-outline {
-  border: 2px solid var(--text);
-  padding: 0.75rem 1.6rem;
-  color: var(--text);
-  background: transparent;
-  transition: all 0.25s ease-out;
-  cursor: pointer;
-}
-
-.button-outline:hover {
-  background: var(--primary);
-  border-color: transparent;
-  color: var(--text);
-}
-
-/* grid card layout */
-.grid-cols-minmax {
-  grid-template-columns: 1fr;
-}
-
-/* sm */
-@media (min-width: 640px) {
-  .button-outline {
-    padding: 0.75rem 2rem;
-  }
-
-  .grid-cols-minmax {
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  }
-}
-
-/* md */
-@media (min-width: 768px) {
-  .px-page {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .social-icon-md {
-    width: 3rem;
-    height: 3rem;
-  }
-
-  .social-icon-md svg {
-    width: 24px;
-    height: 24px;
+    --h-header: 84px;
   }
 }
 
 * {
-  min-height: 0px;
-  min-width: 0px;
-  flex: none;
+  min-height: 0;
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+  Clip horizontal overflow without creating a scroll container.
+  `overflow-x: hidden` would force overflow-y to compute to `auto`, turning the
+  element into its own scroller and moving scroll events off `window`.
+  `overflow-x: clip` pairs with a visible y-axis and avoids that entirely.
+*/
+body {
+  overflow-x: clip;
+}
+
+body {
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: radial-gradient(
+    var(--line) 0.6px,
+    transparent 0.6px
+  );
+  background-size: 22px 22px;
+  font-family: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* ---------- Typography ---------- */
+.font-serif {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+.display {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-grotesk), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* ---------- Layout helpers ---------- */
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2.5rem;
+  }
+}
+
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--line-strong);
+}
+
+/* Section index number in the margin */
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Links ---------- */
+.link-underline {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease;
+  padding-bottom: 1px;
+}
+.link-underline:hover {
+  background-size: 100% 1.5px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-grotesk), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid var(--ink);
+  transition: all 0.22s ease;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---------- Tag / chip ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-grotesk), sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: var(--card);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.chip:hover {
+  border-color: var(--muted);
+}
+
+/* ---------- Project index rows ---------- */
+.work-row {
+  border-top: 1px solid var(--line-strong);
+  transition: background 0.25s ease, padding 0.25s ease;
+}
+.work-row:hover {
+  background: var(--card);
+}
+.work-title {
+  font-family: var(--font-serif), serif;
+  transition: color 0.2s ease;
+}
+.work-row:hover .work-title {
+  color: var(--accent);
+}
+.work-arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.25s ease;
+}
+.work-row:hover .work-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 2px solid var(--paper-2);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
