@@ -10,7 +10,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/haider-ali-693996272/",
   github: "https://github.com/haider-94",
   whatsapp: "https://wa.me/923238898327",
-  resume: "/HaiderAli-CV.pdf",
+  resume: "/Haider_Ali_Resume_ATS.pdf",
   available: true,
   availableText: "Open to full-stack & frontend roles",
   tagline:
