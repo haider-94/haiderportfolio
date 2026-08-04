@@ -1,21 +1,27 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Fraunces, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/portfolio";
 
-const serif = Fraunces({
-  subsets: ["latin"],
-  display: "swap",
+// Fonts are self-hosted (see ./fonts) so the build never fetches from Google
+// Fonts — deploy environments that can't reach fonts.gstatic.com still build.
+const serif = localFont({
   variable: "--font-serif",
-  axes: ["opsz"],
+  display: "swap",
+  src: [
+    { path: "./fonts/fraunces-normal.woff2", weight: "100 900", style: "normal" },
+    { path: "./fonts/fraunces-italic.woff2", weight: "100 900", style: "italic" },
+  ],
 });
 
-const grotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
+const grotesk = localFont({
   variable: "--font-grotesk",
+  display: "swap",
+  src: [
+    { path: "./fonts/space-grotesk-normal.woff2", weight: "300 700", style: "normal" },
+  ],
 });
 
 export const metadata = {
